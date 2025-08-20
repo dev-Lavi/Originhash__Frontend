@@ -614,7 +614,7 @@ export default function ModulesPage() {
       </div>
 
       {/* Enhanced Add Lesson Modal */}
-      {showLessonModal && (
+      {/* {showLessonModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
           <div className="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl">
             <div className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200">
@@ -772,7 +772,173 @@ export default function ModulesPage() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
+
+{showLessonModal && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-2 sm:p-4 z-50 backdrop-blur-sm">
+    <div className="bg-white rounded-2xl w-full max-w-lg max-h-[95vh] overflow-hidden shadow-2xl mx-2 sm:mx-4 flex flex-col">
+      {/* Header - Fixed */}
+      <div className="flex-shrink-0 p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+            </div>
+            <div>
+              <h2 className="text-lg sm:text-xl font-bold text-gray-800">Add New Lesson</h2>
+              <p className="text-xs sm:text-sm text-gray-500 hidden sm:block">Create engaging content for your students</p>
+            </div>
+          </div>
+          <button
+            onClick={closeLessonModal}
+            className="p-1.5 sm:p-2 hover:bg-white/50 rounded-lg transition-colors duration-200 flex-shrink-0"
+          >
+            <CloseIcon />
+          </button>
+        </div>
+      </div>
+
+      {/* Content - Scrollable */}
+      <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            Lesson Title *
+          </label>
+          <input
+            type="text"
+            value={lessonForm.title}
+            onChange={(e) => handleLessonFormChange("title", e.target.value)}
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-sm sm:text-base"
+            placeholder="Enter an engaging lesson title"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            Duration *
+          </label>
+          <input
+            type="text"
+            value={lessonForm.duration}
+            onChange={(e) => handleLessonFormChange("duration", e.target.value)}
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-sm sm:text-base"
+            placeholder="e.g., 15:30 or 25 minutes"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            Video Content *
+          </label>
+          <div className="space-y-4">
+            <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 sm:p-8 text-center hover:border-blue-400 hover:bg-blue-50/30 transition-all duration-300 cursor-pointer group">
+              <input
+                type="file"
+                accept="video/*"
+                onChange={handleVideoFileChange}
+                className="hidden"
+                id="videoUpload"
+              />
+
+              {!lessonForm.videoFile ? (
+                <label htmlFor="videoUpload" className="cursor-pointer block">
+                  <div className="group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-8 h-8 sm:w-12 sm:h-12 text-gray-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
+                  </div>
+                  <h4 className="mt-2 sm:mt-4 text-base sm:text-lg font-semibold text-gray-700">
+                    Upload Video File
+                  </h4>
+                  <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-600">
+                    <span className="font-medium text-blue-600 hover:text-blue-500">
+                      Click to browse
+                    </span>{" "}
+                    <span className="hidden sm:inline">or drag and drop your video</span>
+                  </p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    <span className="block sm:inline">Supports MP4, AVI, MOV</span>
+                    <span className="block sm:inline sm:before:content-['•'] sm:before:mx-1">Max size: 500MB</span>
+                  </p>
+                </label>
+              ) : (
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex items-center justify-center gap-2 sm:gap-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div className="text-left min-w-0 flex-1">
+                      <p className="font-medium text-gray-800 truncate text-sm sm:text-base">
+                        {lessonForm.videoFile.name}
+                      </p>
+                      <p className="text-xs sm:text-sm text-gray-500">
+                        {(lessonForm.videoFile.size / (1024 * 1024)).toFixed(2)} MB
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setLessonForm((prev) => ({ ...prev, videoFile: null }))}
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors duration-200"
+                  >
+                    Remove file
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {isUploading && (
+              <div className="bg-blue-50 rounded-xl p-3 sm:p-4 space-y-2 sm:space-y-3">
+                <div className="flex items-center justify-between text-xs sm:text-sm">
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                    <span className="font-medium text-blue-800">Uploading video...</span>
+                  </div>
+                  <span className="font-bold text-blue-600">{uploadProgress}%</span>
+                </div>
+                <div className="w-full bg-blue-200 rounded-full h-1.5 sm:h-2">
+                  <div
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 h-1.5 sm:h-2 rounded-full transition-all duration-300 ease-out"
+                    style={{ width: `${uploadProgress}%` }}
+                  ></div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer - Fixed */}
+      <div className="flex-shrink-0 p-4 sm:p-6 bg-gray-50 border-t border-gray-200 flex flex-col sm:flex-row gap-2 sm:gap-3">
+        <button
+          onClick={closeLessonModal}
+          className="w-full sm:flex-1 px-4 sm:px-6 py-2.5 sm:py-3 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-100 transition-colors duration-200 font-medium text-sm sm:text-base order-2 sm:order-1"
+          disabled={isUploading}
+        >
+          Cancel
+        </button>
+        <button
+          onClick={addLesson}
+          disabled={isUploading || !lessonForm.videoFile || !lessonForm.title.trim() || !lessonForm.duration.trim()}
+          className="w-full sm:flex-1 px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:from-blue-600 disabled:hover:to-indigo-600 text-sm sm:text-base order-1 sm:order-2"
+        >
+          {isUploading ? (
+            <span className="flex items-center justify-center gap-2">
+              <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              Uploading...
+            </span>
+          ) : (
+            "Create Lesson"
+          )}
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
       {/* Enhanced Video Player Modal */}
       {showVideoPlayer && (
