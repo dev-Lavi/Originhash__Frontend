@@ -435,7 +435,7 @@ import axios from 'axios';
 
 export default function CreateCourse() {
   const navigate = useNavigate();
-  const backendBaseURL = "http://localhost:4001"; // your backend
+  const backendBaseURL = "https://originhash-backend.onrender.com"; // your backend
 
   const [courseData, setCourseData] = useState({
     title: '',

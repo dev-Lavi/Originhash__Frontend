@@ -14,7 +14,7 @@ export default function AvailableCoursesPage() {
   useEffect(() => {
     setLoading(true);
     // Simulating your API call
-    fetch("http://localhost:4001/api/v1/admin/courses")
+    fetch("https://originhash-backend.onrender.com/api/v1/admin/courses")
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);

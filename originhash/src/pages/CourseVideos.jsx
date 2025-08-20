@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 
 // Enhanced Video Player Component
 const VideoPlayer = ({ videoUrl, title, onClose }) => {
-  const baseURL = 'http://localhost:4001';
+  const baseURL = 'https://originhash-backend.onrender.com';
   const fullVideoUrl = videoUrl?.startsWith('http') ? videoUrl : `${baseURL}${videoUrl}`;
   
   return (
@@ -125,7 +125,7 @@ export default function ModulesPage() {
     try {
       setLoading(true);
       const response = await fetch(
-        `http://localhost:4001/api/v1/admin/course/modules/fetchCourseDetails/${courseId}`,
+        `https://originhash-backend.onrender.com/api/v1/admin/course/modules/fetchCourseDetails/${courseId}`,
         {
           method: "GET",
           headers: {
@@ -168,7 +168,7 @@ export default function ModulesPage() {
 
     try {
       const response = await fetch(
-        `http://localhost:4001/api/v1/admin/course/addModules/${courseId}`,
+        `https://originhash-backend.onrender.com/api/v1/admin/course/addModules/${courseId}`,
         {
           method: "POST",
           headers: {
@@ -207,7 +207,7 @@ export default function ModulesPage() {
       }
 
       const response = await fetch(
-        `http://localhost:4001/api/v1/admin/course/${courseId}/module/${moduleId}`,
+        `https://originhash-backend.onrender.com/api/v1/admin/course/${courseId}/module/${moduleId}`,
         {
           method: "DELETE",
           headers: {
@@ -329,7 +329,7 @@ export default function ModulesPage() {
       }, 200);
       
       const response = await fetch(
-        `http://localhost:4001/api/v1/admin/course/module/addLesson/${currentModuleId}`,
+        `https://originhash-backend.onrender.com/api/v1/admin/course/module/addLesson/${currentModuleId}`,
         {
           method: 'POST',
           body: formData
@@ -371,7 +371,7 @@ export default function ModulesPage() {
 
     try {
       const response = await fetch(
-        `http://localhost:4001/api/v1/admin/course/module/${moduleId}/lesson/${lessonId}`,
+        `https://originhash-backend.onrender.com/api/v1/admin/course/module/${moduleId}/lesson/${lessonId}`,
         {
           method: 'DELETE'
         }

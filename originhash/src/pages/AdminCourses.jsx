@@ -74,7 +74,7 @@ import { useNavigate } from 'react-router-dom';
 const CoursesContent = () => {
   const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
-  const BACKEND_URL = "http://localhost:4001"; // <-- Added constant
+  const BACKEND_URL = "https://originhash-backend.onrender.com"; // <-- Added constant
 
   useEffect(() => {
     const fetchCourses = async () => {

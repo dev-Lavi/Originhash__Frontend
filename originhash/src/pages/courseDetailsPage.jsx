@@ -9,7 +9,7 @@ export default function CourseDetailsPage() {
   const [activeModule, setActiveModule] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:4001/api/v1/admin/course/modules/fetchCourseDetails/${id}`)
+    fetch(`https://originhash-backend.onrender.com/api/v1/admin/course/modules/fetchCourseDetails/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCourse(data);
