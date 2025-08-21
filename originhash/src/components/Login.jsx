@@ -215,7 +215,7 @@ const handleSubmit = async (e) => {
           <div className="space-y-3">
           <button
           onClick={() => {
-          // window.location.href = "https://originhash-backend.onrender.com/api/v1/auth/google";
+          window.location.href = `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/google`;
           }}
           className="google-login-btn w-full border border-gray-300 flex items-center justify-center gap-3 py-2 rounded-xl hover:bg-gray-50 transition"
           >
