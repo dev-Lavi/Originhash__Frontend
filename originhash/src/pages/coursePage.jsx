@@ -141,7 +141,7 @@ export default function AvailableCoursesPage() {
           {/* Course Thumbnail */}
           <div className="relative overflow-hidden rounded-t-xl">
             <img
-              src={course.thumbnail ? `http://localhost:4001${course.thumbnail}` : 'https://via.placeholder.com/400x200?text=Course+Image'}
+              src={course.thumbnail ? `https://originhash-backend.onrender.com${course.thumbnail}` : 'https://via.placeholder.com/400x200?text=Course+Image'}
               alt={course.title}
               className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             />
@@ -239,7 +239,7 @@ export default function AvailableCoursesPage() {
               {/* Course Thumbnail */}
               <div className="flex-shrink-0 relative">
                 <img
-                  src={course.thumbnail ? `http://localhost:4001${course.thumbnail}` : 'https://via.placeholder.com/120x80?text=Course'}
+                  src={course.thumbnail ? `https://originhash-backend.onrender.com${course.thumbnail}` : 'https://via.placeholder.com/120x80?text=Course'}
                   alt={course.title}
                   className="w-32 h-20 object-cover rounded-lg"
                 />

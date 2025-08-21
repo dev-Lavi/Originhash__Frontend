@@ -125,8 +125,8 @@ export default function CourseDetailsPage() {
                   <video
                     controls
                     className="w-full h-full"
-                    src={`http://localhost:4001${selectedLesson.videoUrl}`}
-                    poster={course.thumbnail ? `http://localhost:4001${course.thumbnail}` : undefined}
+                    src={`https://originhash-backend.onrender.com${selectedLesson.videoUrl}`}
+                    poster={course.thumbnail ? `https://originhash-backend.onrender.com${course.thumbnail}` : undefined}
                   >
                     Your browser does not support the video tag.
                   </video>
@@ -231,7 +231,7 @@ export default function CourseDetailsPage() {
             {course.thumbnail && (
               <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
                 <img
-                  src={`http://localhost:4001${course.thumbnail}`}
+                  src={`https://originhash-backend.onrender.com${course.thumbnail}`}
                   alt={course.title}
                   className="w-full h-48 object-cover"
                 />
