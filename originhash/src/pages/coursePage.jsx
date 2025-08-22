@@ -14,7 +14,7 @@ export default function AvailableCoursesPage() {
   useEffect(() => {
     setLoading(true);
     // Simulating your API call
-    fetch("${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/courses")
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/courses`)
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);
