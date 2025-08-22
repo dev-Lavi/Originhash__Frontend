@@ -74,7 +74,7 @@ import { useNavigate } from 'react-router-dom';
 const CoursesContent = () => {
   const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
-  const BACKEND_URL = "https://originhash-backend.onrender.com"; // <-- Added constant
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL; // <-- Added constant
 
   useEffect(() => {
     const fetchCourses = async () => {

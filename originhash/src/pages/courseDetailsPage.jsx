@@ -9,7 +9,7 @@ export default function CourseDetailsPage() {
   const [activeModule, setActiveModule] = useState(0);
 
   useEffect(() => {
-    fetch(`https://originhash-backend.onrender.com/api/v1/admin/course/modules/fetchCourseDetails/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/course/modules/fetchCourseDetails/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setCourse(data);
@@ -125,8 +125,8 @@ export default function CourseDetailsPage() {
                   <video
                     controls
                     className="w-full h-full"
-                    src={`https://originhash-backend.onrender.com${selectedLesson.videoUrl}`}
-                    poster={course.thumbnail ? `https://originhash-backend.onrender.com${course.thumbnail}` : undefined}
+                    src={`${import.meta.env.VITE_BACKEND_URL}${selectedLesson.videoUrl}`}
+                    poster={course.thumbnail ? `${import.meta.env.VITE_BACKEND_URL}${course.thumbnail}` : undefined}
                   >
                     Your browser does not support the video tag.
                   </video>
@@ -231,7 +231,7 @@ export default function CourseDetailsPage() {
             {course.thumbnail && (
               <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
                 <img
-                  src={`https://originhash-backend.onrender.com${course.thumbnail}`}
+                  src={`${import.meta.env.VITE_BACKEND_URL}${course.thumbnail}`}
                   alt={course.title}
                   className="w-full h-48 object-cover"
                 />

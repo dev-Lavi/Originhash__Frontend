@@ -81,7 +81,7 @@ const IssuedCertificates = () => {
               <div>{cert.uniqueId}</div>
               <div>
                 <a
-                  href={`https://originhash-backend.onrender.com${cert.imageLink}`}
+                  href={`${import.meta.env.VITE_BACKEND_URL}${cert.imageLink}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.previewBtn}

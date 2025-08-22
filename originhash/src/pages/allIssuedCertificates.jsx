@@ -76,7 +76,7 @@ useEffect(() => {
       <div>{cert.uniqueId}</div>
       <div>
         <a
-          href={`https://originhash-backend.onrender.com${cert.imageLink}`}
+          href={`${import.meta.env.VITE_BACKEND_URL}${cert.imageLink}`}
           alt="Certificate Preview"
           className={styles.previewLink}
         >
