@@ -127,8 +127,15 @@ const handleSubmit = async (e) => {
           />
         </div>
 
+        
         {/* Left Form Section */}
         <div className="flex flex-col justify-center p-10">
+          {/* Branding Section */}
+           <div className="text-center mb-8">
+         <img src="/logo.svg" alt="Originhash Logo" className="mx-auto w-16 h-16 mb-2" />
+         <h1 className="text-2xl font-bold">Originhash</h1>
+         <p className="text-gray-500">Login securely to Originhash</p>
+         </div>
           {/* Sign In / Sign Up Switch */}
           <div className="flex bg-gray-100 rounded-xl mb-8 w-full max-w-xs mx-auto">
             <button
@@ -215,12 +222,12 @@ const handleSubmit = async (e) => {
           <div className="space-y-3">
           <button
           onClick={() => {
-          window.location.href = `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/google`;
+          window.location.href = "/auth/google";
           }}
           className="google-login-btn w-full border border-gray-300 flex items-center justify-center gap-3 py-2 rounded-xl hover:bg-gray-50 transition"
           >
           <img
-          src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Google_Favicon_2025.svg"
+          src="google-logo.svg"
           alt="Google"
           className="w-6 h-6"
          />
