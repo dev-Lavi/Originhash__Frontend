@@ -93,7 +93,7 @@ const handleSubmit = async (e) => {
           opacity: 0.8,
           boxShadow: '0 0 40px 0 #e0e7ff',
           top: '20%',
-          left: '15%',
+          left: '20%',
           transform: 'translate(-110%, -110%)'
         }}
       ></span>
@@ -109,137 +109,135 @@ const handleSubmit = async (e) => {
           background: '#735FFF',
           opacity: 0.7,
           boxShadow: '0 0 40px 0 #7568ff44',
-          bottom: '19%',
-          right: '15%',
+          bottom: '23%',
+          right: '20%',
           transform: 'translate(110%, 110%)'
         }}
       ></span>
 
-      <div className="bg-white rounded-3xl shadow-xl w-full max-w-5xl grid md:grid-cols-2 overflow-hidden relative z-10 mt-0 md:mt-8">
-        {/* Right Illustration Section */}
-        <div className="bg-[#735fff] hidden md:flex items-center justify-center relative">
-          <img
-            src={illustration}
-            alt="Illustration"
-            className="w-[60%] max-w-md drop-shadow-xl rounded-2xl"
-          />
-        </div>
+      <div className="bg-white rounded-3xl shadow-xl w-full max-w-4xl grid md:grid-cols-2 overflow-hidden relative z-10 mt-0 max-h-[95vh]">
+  
+  {/* Right Illustration Section */}
+  <div className="bg-[#735fff] hidden md:flex items-center justify-center relative">
+    <img
+      src={illustration}
+      alt="Illustration"
+      className="w-[60%] max-w-md drop-shadow-xl rounded-2xl"
+    />
+  </div>
 
-        {/* Left Form Section */}
-        <div className="flex flex-col justify-center p-6 sm:p-8 md:p-10">
-          {/* Sign In / Sign Up Switch */}
-          <div className="flex bg-gray-100 rounded-xl mb-8 w-full max-w-xs mx-auto">
-            <button
-              className={`flex-1 py-2 rounded-xl font-semibold transition ${
-                activeTab === "signin"
-                  ? "bg-white text-gray-900 shadow border border-gray-300"
-                  : "text-gray-400"
-              }`}
-              onClick={() => {
-                setActiveTab("signin");
-                navigate("/");
-              }}
-            >
-              Login
-            </button>
-            <button
-              className={`flex-1 py-2 rounded-xl font-semibold transition ${
-                activeTab === "signup"
-                  ? "bg-white text-gray-900 shadow border border-gray-300"
-                  : "text-gray-400"
-              }`}
-              onClick={() => setActiveTab("signup")}
-            >
-              Register
-            </button>
-          </div>
+  {/* Left Form Section - Reduced padding and spacing */}
+  <div className="flex flex-col justify-center p-6 overflow-y-auto">
+    
+    {/* Sign In / Sign Up Switch - Reduced margin */}
+    <div className="flex bg-gray-100 rounded-xl mb-4 w-full max-w-xs mx-auto">
+      <button
+        className={`flex-1 py-2 rounded-xl font-semibold transition text-sm ${
+          activeTab === "signin"
+            ? "bg-white text-gray-900 shadow border border-gray-300"
+            : "text-gray-400"
+        }`}
+        onClick={() => {
+          setActiveTab("signin");
+          navigate("/");
+        }}
+      >
+        Login
+      </button>
+      <button
+        className={`flex-1 py-2 rounded-xl font-semibold transition text-sm ${
+          activeTab === "signup"
+            ? "bg-white text-gray-900 shadow border border-gray-300"
+            : "text-gray-400"
+        }`}
+        onClick={() => setActiveTab("signup")}
+      >
+        Register
+      </button>
+    </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-2">REGISTER</h2>
-          <p className="text-center text-gray-500 mb-6 text-sm sm:text-base">
-            Create your account to get started
-          </p>
+    <h2 className="text-2xl font-bold text-center mb-1">REGISTER</h2>
+    <p className="text-center text-gray-500 mb-4 text-sm">
+      Create your account to get started
+    </p>
 
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <div className="flex items-center gap-2 bg-gray-100 px-4 py-3 rounded-xl">
-              <FaUser className="text-gray-400" />
-              <input
-                type="text"
-                placeholder="Enter your Full Name"
-                className="bg-transparent w-full outline-none text-sm sm:text-base"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-
-            <div className="flex items-center gap-2 bg-gray-100 px-4 py-3 rounded-xl">
-              <FaEnvelope className="text-gray-400" />
-              <input
-                type="email"
-                placeholder="Enter your Email"
-                className="bg-transparent w-full outline-none text-sm sm:text-base"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-
-            <div className="flex items-center gap-2 bg-gray-100 px-4 py-3 rounded-xl">
-              <FaLock className="text-gray-400" />
-              <input
-                type="password"
-                placeholder="Enter your Password"
-                className="bg-transparent w-full outline-none text-sm sm:text-base"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-
-            {/* User Type Radios */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-4 sm:gap-6 md:gap-8 rounded-2xl border border-[#e0e7ff] bg-white py-3 px-4 mt-2 mb-2">
-              {["admin", "corporate", "individual"].map((type) => (
-                <label key={type} className="flex items-center gap-2 font-semibold text-gray-700 text-sm sm:text-base">
-                  <input
-                    type="radio"
-                    className="w-5 h-5 border-2 border-[#a5b4fc] focus:ring-0"
-                    name="userType"
-                    value={type}
-                    checked={userType === type}
-                    onChange={() => setUserType(type)}
-                  />
-                  {type.charAt(0).toUpperCase() + type.slice(1)}
-                </label>
-              ))}
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-[#6C4CFF] hover:bg-[#5c3fe0] text-white py-3 rounded-xl shadow-md font-semibold transition text-sm sm:text-base"
-            >
-              {loading ? "Registering..." : "Register Now"}
-            </button>
-          </form>
-             
-
-
-              {/* Already have an account */}
-          <div className="mt-8 flex flex-col items-center space-y-3">
-            <p className="text-gray-600 text-sm sm:text-base">
-              Already have an account?
-              <button
-                className="ml-2 text-[#6C4CFF] font-semibold hover:underline transition"
-                type="button"
-                onClick={() => {
-                  navigate("/");
-                }}
-              >
-                Login
-              </button>
-            </p>
-          </div>
-        </div>
-
-
+    <form className="space-y-3" onSubmit={handleSubmit}>
+      <div className="flex items-center gap-2 bg-gray-100 px-4 py-2.5 rounded-xl">
+        <FaUser className="text-gray-400 text-sm" />
+        <input
+          type="text"
+          placeholder="Enter your Full Name"
+          className="bg-transparent w-full outline-none text-sm"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
       </div>
+
+      <div className="flex items-center gap-2 bg-gray-100 px-4 py-2.5 rounded-xl">
+        <FaEnvelope className="text-gray-400 text-sm" />
+        <input
+          type="email"
+          placeholder="Enter your Email"
+          className="bg-transparent w-full outline-none text-sm"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+
+      <div className="flex items-center gap-2 bg-gray-100 px-4 py-2.5 rounded-xl">
+        <FaLock className="text-gray-400 text-sm" />
+        <input
+          type="password"
+          placeholder="Enter your Password"
+          className="bg-transparent w-full outline-none text-sm"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+
+      {/* User Type Radios - More compact */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3 sm:gap-4 rounded-xl border border-[#e0e7ff] bg-white py-2.5 px-3">
+        {["admin", "corporate", "individual"].map((type) => (
+          <label key={type} className="flex items-center gap-2 font-semibold text-gray-700 text-sm">
+            <input
+              type="radio"
+              className="w-4 h-4 border-2 border-[#a5b4fc] focus:ring-0"
+              name="userType"
+              value={type}
+              checked={userType === type}
+              onChange={() => setUserType(type)}
+            />
+            {type.charAt(0).toUpperCase() + type.slice(1)}
+          </label>
+        ))}
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-[#6C4CFF] hover:bg-[#5c3fe0] text-white py-2.5 rounded-xl shadow-md font-semibold transition text-sm"
+      >
+        {loading ? "Registering..." : "Register Now"}
+      </button>
+    </form>
+
+    {/* Already have an account */}
+    <div className="mt-4 flex flex-col items-center">
+      <p className="text-gray-600 text-sm">
+        Already have an account?
+        <button
+          className="ml-1 text-[#6C4CFF] font-semibold hover:underline transition"
+          type="button"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Login
+        </button>
+      </p>
+    </div>
+  </div>
+</div>
       <ToastContainer />
     </div>
   );

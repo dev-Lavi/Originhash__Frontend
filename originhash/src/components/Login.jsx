@@ -93,7 +93,7 @@ const handleSubmit = async (e) => {
           opacity: 0.8,
           boxShadow: '0 0 40px 0 #e0e7ff',
           top: '19%',
-          left: '15%',
+          left: '20%',
           transform: 'translate(-110%, -110%)'
         }}
       ></span>
@@ -109,160 +109,156 @@ const handleSubmit = async (e) => {
           background: '#735FFF',
           opacity: 0.7,
           boxShadow: '0 0 40px 0 #7568ff44',
-          bottom: '19%',
-          right: '15%',
+          bottom: '23%',
+          right: '19%',
           transform: 'translate(110%, 110%)'
         }}
       ></span>
       
-      <div className="bg-white rounded-3xl shadow-xl w-full max-w-5xl grid md:grid-cols-2 overflow-hidden relative z-10 mt-0 ">
+      <div className="bg-white rounded-3xl shadow-xl w-full max-w-4xl grid md:grid-cols-2 overflow-hidden relative z-10 mt-0 max-h-[150vh]">
 
 
-                {/* Right Illustration Section */}
-        <div className="bg-[#735fff] hidden md:flex items-center justify-center relative">
-          <img
-            src={illustration}
-            alt="Illustration"
-            className="w-[60%] max-w-md drop-shadow-xl rounded-2xl"
-          />
-        </div>
+  {/* Right Illustration Section */}
+  <div className="bg-[#735fff] hidden md:flex items-center justify-center relative">
+    <img
+      src="/glowlogo.svg"
+      alt="Illustration"
+      className="w-[40%] max-w-md drop-shadow-xl rounded-2xl"
+    />
+    <div className="absolute bottom-10 text-center px-4">
+      <h3 className="text-xl font-bold text-white mb-11">Blockchain Traceability & Transparency</h3>
+    </div>
+  </div>
+ 
 
-        
-        {/* Left Form Section */}
-        <div className="flex flex-col justify-center p-10">
-          {/* Branding Section */}
-           <div className="text-center mb-8">
-         <img src="/logo.svg" alt="Originhash Logo" className="mx-auto w-16 h-16 mb-2" />
-         <h1 className="text-2xl font-bold">Originhash</h1>
-         <p className="text-gray-500">Login securely to Originhash</p>
-         </div>
-          {/* Sign In / Sign Up Switch */}
-          <div className="flex bg-gray-100 rounded-xl mb-8 w-full max-w-xs mx-auto">
-            <button
-              className={`flex-1 py-2 rounded-xl font-semibold transition ${
-                activeTab === "signin"
-                  ? "bg-white text-gray-900 shadow border border-gray-300"
-                  : "text-gray-400"
-              }`}
-              onClick={() => setActiveTab("signin")}
-            >
-              Login
-            </button>
-            <button
-              className={`flex-1 py-2 rounded-xl font-semibold transition ${
-                activeTab === "signup"
-                  ? "bg-white text-gray-900 shadow border border-gray-300"
-                  : "text-gray-400"
-              }`}
-              onClick={() => {
-                setActiveTab("signup");
-                navigate("/register");
-              }}
-            >
-              Register
-            </button>
-          </div>
-
-          <h2 className="text-3xl font-bold text-center mb-2">Welcome back!</h2>
-          <p className="text-center text-gray-500 mb-6">
-            Please enter your credentials to Login
-          </p>
-
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <div className="flex items-center gap-2 bg-gray-100 px-4 py-3 rounded-xl">
-              <FaUser className="text-gray-400" />
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="bg-transparent w-full outline-none"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-
-            <div className="flex items-center gap-2 bg-gray-100 px-4 py-3 rounded-xl">
-              <FaLock className="text-gray-400" />
-              <input
-                type="password"
-                placeholder="Enter your Password"
-                className="bg-transparent w-full outline-none"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={
-                loading ||
-                (lockoutTime && Date.now() < lockoutTime) ||
-                wrongAttempts >= 5
-              }
-              className="w-full bg-[#6C4CFF] hover:bg-[#5c3fe0] text-white py-3 rounded-xl shadow-md font-semibold transition"
-            >
-              {(lockoutTime && Date.now() < lockoutTime)
-                ? "Login disabled for 1 hour"
-                : wrongAttempts >= 5
-                  ? "Too many attempts"
-                  : loading
-                    ? "Logging in..."
-                    : "Login Now"}
-            </button>
-          </form>
-
-          <div className="my-6 flex items-center justify-center">
-            <hr className="flex-grow border-t border-gray-300" />
-            <span className="mx-4 font-semibold text-gray-600 text-sm">
-              Login with Others
-            </span>
-            <hr className="flex-grow border-t border-gray-300" />
-          </div>
-
-          {/* Login with google button */}
-          <div className="space-y-3">
-          <button
-          onClick={() => {
-          window.location.href = "/api/v1/auth/google";
-          }}
-          className="google-login-btn w-full border border-gray-300 flex items-center justify-center gap-3 py-2 rounded-xl hover:bg-gray-50 transition"
-          >
-          <img
-          src="google-logo.svg"
-          alt="Google"
-          className="w-6 h-6"
-         />
-         <span className="text-base font-medium text-center">Login with Google</span>
-          </button>
-          </div>
-
-          {/* Additional Links Section */}
-          <div className="mt-8 flex flex-col items-center space-y-3">
-            <button
-              className="text-[#6C4CFF] font-semibold hover:underline transition"
-              type="button"
-              onClick={() => {
-                navigate("/forgot-password");
-              }}
-            >
-              Forgot password?
-            </button>
-            <p className="text-gray-600">
-              Don't have an account yet?
-              <button
-                className="ml-2 text-[#6C4CFF] font-semibold hover:underline transition"
-                type="button"
-                onClick={() => {
-                  navigate("/register");
-                }}
-              >
-                Register
-              </button>
-            </p>
-          </div>
-        </div>
+  {/* Left Form Section - Reduced padding and spacing */}
+  <div className="flex flex-col justify-center p-6 overflow-y-auto">
 
 
+    {/* Sign In / Sign Up Switch - Reduced margin */}
+    <div className="flex bg-gray-100 rounded-xl mb-4 w-full max-w-xs mx-auto">
+      <button
+        className={`flex-1 py-2 rounded-xl font-semibold transition text-sm ${
+          activeTab === "signin"
+            ? "bg-white text-gray-900 shadow border border-gray-300"
+            : "text-gray-400"
+        }`}
+        onClick={() => setActiveTab("signin")}
+      >
+        Login
+      </button>
+      <button
+        className={`flex-1 py-2 rounded-xl font-semibold transition text-sm ${
+          activeTab === "signup"
+            ? "bg-white text-gray-900 shadow border border-gray-300"
+            : "text-gray-400"
+        }`}
+        onClick={() => {
+          setActiveTab("signup");
+          navigate("/register");
+        }}
+      >
+        Register
+      </button>
+    </div>
+
+    <h2 className="text-2xl font-bold text-center mb-1">Welcome back!</h2>
+    <p className="text-center text-gray-500 mb-4 text-sm">
+      Please enter your credentials to Login
+    </p>
+
+    <form className="space-y-3" onSubmit={handleSubmit}>
+      <div className="flex items-center gap-2 bg-gray-100 px-4 py-2.5 rounded-xl">
+        <FaUser className="text-gray-400 text-sm" />
+        <input
+          type="email"
+          placeholder="Enter your email"
+          className="bg-transparent w-full outline-none text-sm"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </div>
+
+      <div className="flex items-center gap-2 bg-gray-100 px-4 py-2.5 rounded-xl">
+        <FaLock className="text-gray-400 text-sm" />
+        <input
+          type="password"
+          placeholder="Enter your Password"
+          className="bg-transparent w-full outline-none text-sm"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={
+          loading ||
+          (lockoutTime && Date.now() < lockoutTime) ||
+          wrongAttempts >= 5
+        }
+        className="w-full bg-[#6C4CFF] hover:bg-[#5c3fe0] text-white py-2.5 rounded-xl shadow-md font-semibold transition text-sm"
+      >
+        {(lockoutTime && Date.now() < lockoutTime)
+          ? "Login disabled for 1 hour"
+          : wrongAttempts >= 5
+            ? "Too many attempts"
+            : loading
+              ? "Logging in..."
+              : "Login Now"}
+      </button>
+    </form>
+
+    <div className="my-2 flex items-center justify-center">
+      <hr className="flex-grow border-t border-gray-300" />
+      <span className="mx-3  font-semibold text-gray-600 text-xs">
+        Login with Others
+      </span>
+      <hr className="flex-grow border-t border-gray-300" />
+    </div>
+
+    {/* Login with google button */}
+    <button
+      onClick={() => {
+        window.location.href = "/api/v1/auth/google";
+      }}
+      className="google-login-btn w-full border border-gray-300 flex items-center justify-center gap-2 py-2 rounded-xl hover:bg-gray-50 transition"
+    >
+      <img
+        src="google-logo.svg"
+        alt="Google"
+        className="w-5 h-5"
+      />
+      <span className="text-sm font-medium text-center">Login with Google</span>
+    </button>
+
+    {/* Additional Links Section */}
+    <div className="mt-4 flex flex-col items-center space-y-2">
+      <button
+        className="text-[#6C4CFF] font-semibold hover:underline transition text-sm"
+        type="button"
+        onClick={() => {
+          navigate("/forgot-password");
+        }}
+      >
+        Forgot password?
+      </button>
+      <p className="text-gray-600 text-sm">
+        Don't have an account yet?
+        <button
+          className="ml-1 text-[#6C4CFF] font-semibold hover:underline transition"
+          type="button"
+          onClick={() => {
+            navigate("/register");
+          }}
+        >
+          Register
+        </button>
+      </p>
+    </div>
+  </div>
+</div>
+
       <ToastContainer />
     </div>
     

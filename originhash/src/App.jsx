@@ -27,6 +27,8 @@ import CourseDetailsPage from "./pages/courseDetailsPage";
 import ModulesPage from "./pages/CourseVideos";
 import CreateCourse from "./pages/CreateCourse";
 import AdminCourses from "./pages/AdminCourses";
+import AuthLayout from "./components/AuthLayout";
+import Footerauth from "./components/Footerauth";
 
 function App() {
   return (
@@ -34,7 +36,11 @@ function App() {
       <>
         <ToastContainer position="top-center" autoClose={3000} />
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={
+            <AuthLayout>
+              <Login />
+            </AuthLayout>
+          } />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
