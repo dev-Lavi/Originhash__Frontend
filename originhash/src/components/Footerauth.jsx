@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import illustration from "../assets/icons/Blockchainfoot.png";
 // import './Footerauth.css';
 
 const Footerauth = () => {

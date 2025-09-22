@@ -126,7 +126,7 @@ const handleSubmit = async (e) => {
       className="w-[40%] max-w-md drop-shadow-xl rounded-2xl"
     />
     <div className="absolute bottom-10 text-center px-4">
-      <h3 className="text-xl font-bold text-white mb-11">Blockchain Traceability & Transparency</h3>
+      <h3 className="text-xl font-bold text-[#24ff00] mb-11">Blockchain Traceability & Transparency</h3>
     </div>
   </div>
  

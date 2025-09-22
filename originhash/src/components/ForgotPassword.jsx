@@ -54,33 +54,33 @@ const ForgotPassword = () => {
         }}
       ></span>
 
-      <div className="bg-white rounded-3xl shadow-xl w-full max-w-5xl grid md:grid-cols-2 overflow-hidden relative z-10 mt-0 md:mt-8">
+      <div className="bg-white rounded-3xl shadow-xl w-full max-w-3xl grid md:grid-cols-2 overflow-hidden relative z-10 mt-0 md:mt-8">
         {/* Right Illustration */}
         <div className="bg-[#735fff] hidden md:flex items-center justify-center">
-          <img src={illustration} alt="Illustration" className="w-[48%] max-w-md drop-shadow-xl rounded-2xl" />
+          <img src={illustration} alt="Illustration" className="w-[50%] max-w-md drop-shadow-xl rounded-2xl" />
         </div>
 
         {/* Left Form */}
-        <div className="flex flex-col justify-center p-10">
+        <div className="flex flex-col justify-center p-6 overflow-y-auto">
           <h2 className="text-3xl font-bold text-center mb-2">FORGOT PASSWORD</h2>
           <p className="text-center text-gray-500 mb-6">Enter your email and we'll send you a reset link</p>
 
           <form className="space-y-4" onSubmit={handleSubmit}>
-            <div className="flex items-center gap-2 bg-gray-100 px-4 py-3 rounded-xl">
-              <FaEnvelope className="text-gray-400" />
+            <div className="flex items-center gap-2 bg-gray-100 px-4 py-2.5 rounded-xl">
+              <FaEnvelope className="text-gray-400 text-sm" />
               <input
                 type="email"
                 required
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent w-full outline-none"
+                className="bg-transparent w-full outline-none text-sm"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-[#6C4CFF] hover:bg-[#5c3fe0] text-white py-3 rounded-xl shadow-md font-semibold transition"
+              className="w-full bg-[#6C4CFF] hover:bg-[#5c3fe0] text-white py-2.5 rounded-xl shadow-md font-semibold transition text-sm"
             >
               Send Reset Link
             </button>
@@ -89,7 +89,7 @@ const ForgotPassword = () => {
           {/* Links */}
           <div className="mt-8 flex flex-col items-center space-y-3">
             <button
-              className="text-[#6C4CFF] font-semibold hover:underline transition"
+              className="text-[#6C4CFF] font-semibold hover:underline transition text-sm"
               type="button"
               onClick={() => navigate("/")}
             >
@@ -98,7 +98,7 @@ const ForgotPassword = () => {
             <p className="text-gray-600">
               Need an account?
               <button
-                className="ml-2 text-[#6C4CFF] font-semibold hover:underline transition"
+                className="ml-2 text-[#6C4CFF] font-semibold hover:underline transition text-sm"
                 type="button"
                 onClick={() => navigate("/register")}
               >

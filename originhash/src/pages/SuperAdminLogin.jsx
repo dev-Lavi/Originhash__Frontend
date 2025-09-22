@@ -104,7 +104,7 @@ const SuperAdminLogin = () => {
           background: "#735FFF",
           opacity: 0.7,
           boxShadow: "0 0 40px 0 #7568ff44",
-          bottom: "20%",
+          bottom: "24%",
           right: "15%",
           transform: "translate(110%, 110%)",
         }}
@@ -112,54 +112,53 @@ const SuperAdminLogin = () => {
 
       {/* Login Card */}
       <div
-        className="bg-white rounded-3xl shadow-xl w-full max-w-5xl grid md:grid-cols-2 overflow-hidden relative z-10"
-        style={{ minHeight: "600px" }}
+        className="bg-white rounded-3xl shadow-xl w-full max-w-3xl grid md:grid-cols-2 overflow-hidden relative z-10 max-h-[90vh]"
       >
         {/* Right Illustration */}
         <div className="bg-[#735fff] hidden md:flex items-center justify-center">
           <img
             src={illustration}
             alt="Illustration"
-            className="w-[60%] max-w-md drop-shadow-xl rounded-2xl"
+            className="w-[55%] max-w-md drop-shadow-xl rounded-2xl"
           />
         </div>
 
         {/* Left Form */}
-        <div className="flex flex-col justify-center p-10">
+        <div className="flex flex-col justify-center p-6 overflow-y-auto">
           <h2 className="text-3xl font-bold text-center mb-2">Super Admin Login</h2>
-          <p className="text-center text-gray-500 mb-6">
+          <p className="text-center text-gray-500 mb-4 text-sm">
             Enter your credentials to access the super admin dashboard
           </p>
 
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <div className="flex items-center gap-2 bg-gray-100 px-4 py-3 rounded-xl">
-              <FaUser className="text-gray-400" />
+          <form className="space-y-3" onSubmit={handleSubmit}>
+            <div className="flex items-center gap-2 bg-gray-100 px-4 py-2.5 rounded-xl">
+              <FaUser className="text-gray-400 text-sm" />
               <input
                 type="text"
                 placeholder="Enter your Super Admin ID"
-                className="bg-transparent w-full outline-none"
+                className="bg-transparent w-full outline-none text-sm"
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)}
               />
             </div>
 
-            <div className="flex items-center gap-2 bg-gray-100 px-4 py-3 rounded-xl">
-              <FaLock className="text-gray-400" />
+            <div className="flex items-center gap-2 bg-gray-100 px-4 py-2.5 rounded-xl">
+              <FaLock className="text-gray-400 text-sm" />
               <input
                 type="password"
                 placeholder="Enter Password 1"
-                className="bg-transparent w-full outline-none"
+                className="bg-transparent w-full outline-none text-sm"
                 value={password1}
                 onChange={(e) => setPassword1(e.target.value)}
               />
             </div>
 
-            <div className="flex items-center gap-2 bg-gray-100 px-4 py-3 rounded-xl">
-              <FaLock className="text-gray-400" />
+            <div className="flex items-center gap-2 bg-gray-100 px-4 py-2.5 rounded-xl">
+              <FaLock className="text-gray-400 text-sm" />
               <input
                 type="password"
                 placeholder="Enter Password 2"
-                className="bg-transparent w-full outline-none"
+                className="bg-transparent w-full outline-none text-sm"
                 value={password2}
                 onChange={(e) => setPassword2(e.target.value)}
               />
@@ -172,7 +171,7 @@ const SuperAdminLogin = () => {
                 (lockoutTime && Date.now() < lockoutTime) ||
                 wrongAttempts >= 5
               }
-              className="w-full bg-[#6C4CFF] hover:bg-[#5c3fe0] text-white py-3 rounded-xl shadow-md font-semibold transition"
+              className="w-full bg-[#6C4CFF] hover:bg-[#5c3fe0] text-white py-2.5 rounded-xl shadow-md font-semibold transition text-sm"
             >
               {lockoutTime && Date.now() < lockoutTime
                 ? "Login disabled for 1 hour"
