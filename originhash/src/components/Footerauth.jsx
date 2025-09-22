@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
+
 // import './Footerauth.css';
 
 const Footerauth = () => {
@@ -57,17 +58,6 @@ const Footerauth = () => {
     </div>
             </div>
           </div>
-
-          {/* Center - Blockchain Icon (Only visible on large screens)
-            <div className="blockchain-container">
-              <img
-                src={illustration}
-                alt="Blockchain"
-                className="blockchain-icon"
-              />
-            </div> */}
-         
-
 
           {/* Right side - Two sections with offset to push them right */}
           <div className="col-lg-6 offset-lg-2 col-md-12">
