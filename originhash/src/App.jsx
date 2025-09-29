@@ -29,6 +29,7 @@ import CreateCourse from "./pages/CreateCourse";
 import AdminCourses from "./pages/AdminCourses";
 import AuthLayout from "./components/AuthLayout";
 import Footerauth from "./components/Footerauth";
+import CourseDetails from "./pages/CourseDetails";
 
 function App() {
   return (
@@ -65,6 +66,14 @@ function App() {
             element={
               <UserDashboardLayout>
                 <Dashboard />
+              </UserDashboardLayout>
+            }
+          />
+          <Route
+            path="/course-details"
+            element={
+              <UserDashboardLayout>
+                <CourseDetails />
               </UserDashboardLayout>
             }
           />

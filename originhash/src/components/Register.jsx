@@ -115,7 +115,7 @@ const handleSubmit = async (e) => {
         }}
       ></span>
 
-      <div className="bg-white rounded-3xl shadow-xl w-full max-w-4xl grid md:grid-cols-2 overflow-hidden relative z-10 mt-0 max-h-[95vh]">
+      <div className="bg-white rounded-3xl shadow-xl w-full max-w-4xl grid md:grid-cols-2 overflow-hidden relative z-10 mt-0">
   
   {/* Right Illustration Section */}
   <div className="bg-[#735fff] hidden md:flex items-center justify-center relative">

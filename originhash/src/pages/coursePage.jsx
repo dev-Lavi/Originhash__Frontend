@@ -11,71 +11,95 @@ export default function AvailableCoursesPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setLoading(true);
-    // Simulating your API call
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/courses`)
-      .then((res) => res.json())
-      .then((data) => {
-        setCourses(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-        // Mock data for demo purposes
-        setCourses([
-          {
-            _id: '1',
-            title: 'Advanced Digital Marketing',
-            description: 'Master digital marketing strategies with advanced techniques and tools for modern businesses.',
-            thumbnail: '/uploads/images/marketing.jpg',
-            createdAt: '2024-08-10T10:00:00Z',
-            modules: [{}, {}],
-            studentsEnrolled: 245,
-            rating: 4.8,
-            price: 89,
-            category: 'Marketing'
-          },
-          {
-            _id: '2',
-            title: 'React Development Masterclass',
-            description: 'Complete guide to building modern web applications with React, hooks, and best practices.',
-            thumbnail: '/uploads/images/react.jpg',
-            createdAt: '2024-08-08T14:30:00Z',
-            modules: [{}, {}, {}],
-            studentsEnrolled: 189,
-            rating: 4.9,
-            price: 129,
-            category: 'Development'
-          },
-          {
-            _id: '3',
-            title: 'UI/UX Design Fundamentals',
-            description: 'Learn the principles of user interface and user experience design for digital products.',
-            thumbnail: '/uploads/images/design.jpg',
-            createdAt: '2024-08-05T09:15:00Z',
-            modules: [{}],
-            studentsEnrolled: 156,
-            rating: 4.7,
-            price: 79,
-            category: 'Design'
-          },
-          {
-            _id: '4',
-            title: 'Python for Data Science',
-            description: 'Learn Python programming for data analysis, visualization, and machine learning applications.',
-            thumbnail: '/uploads/images/python.jpg',
-            createdAt: '2024-08-03T11:20:00Z',
-            modules: [{}, {}, {}, {}],
-            studentsEnrolled: 298,
-            rating: 4.6,
-            price: 99,
-            category: 'Development'
-          }
-        ]);
-      });
-  }, []);
+useEffect(() => {
+  setLoading(true);
+  
+  // Get token from localStorage
+  const token = localStorage.getItem("authToken");
+  
+  // Create headers object with Authorization
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+  
+  // Add Authorization header if token exists
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  // Make the API call with authentication
+  fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/users/courses`, {
+    method: 'GET',
+    headers: headers,
+    credentials: 'include' // Include credentials if needed
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      setCourses(data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error('API Error:', err);
+      setLoading(false);
+      // Mock data for demo purposes (your existing fallback data)
+      setCourses([
+        {
+          _id: '1',
+          title: 'Advanced Digital Marketing',
+          description: 'Master digital marketing strategies with advanced techniques and tools for modern businesses.',
+          thumbnail: '/uploads/images/marketing.jpg',
+          createdAt: '2024-08-10T10:00:00Z',
+          modules: [{}, {}],
+          studentsEnrolled: 245,
+          rating: 4.8,
+          price: 89,
+          category: 'Marketing'
+        },
+        {
+          _id: '2',
+          title: 'React Development Masterclass',
+          description: 'Complete guide to building modern web applications with React, hooks, and best practices.',
+          thumbnail: '/uploads/images/react.jpg',
+          createdAt: '2024-08-08T14:30:00Z',
+          modules: [{}, {}, {}],
+          studentsEnrolled: 189,
+          rating: 4.9,
+          price: 129,
+          category: 'Development'
+        },
+        {
+          _id: '3',
+          title: 'UI/UX Design Fundamentals',
+          description: 'Learn the principles of user interface and user experience design for digital products.',
+          thumbnail: '/uploads/images/design.jpg',
+          createdAt: '2024-08-05T09:15:00Z',
+          modules: [{}],
+          studentsEnrolled: 156,
+          rating: 4.7,
+          price: 79,
+          category: 'Design'
+        },
+        {
+          _id: '4',
+          title: 'Python for Data Science',
+          description: 'Learn Python programming for data analysis, visualization, and machine learning applications.',
+          thumbnail: '/uploads/images/python.jpg',
+          createdAt: '2024-08-03T11:20:00Z',
+          modules: [{}, {}, {}, {}],
+          studentsEnrolled: 298,
+          rating: 4.6,
+          price: 99,
+          category: 'Development'
+        }
+      ]);
+    });
+}, []);
+
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
